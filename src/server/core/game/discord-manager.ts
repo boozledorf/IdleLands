@@ -63,6 +63,18 @@ export class DiscordManager {
       });
 
     });
+    
+    this.discord.on('interaction', interaction => {
+
+      if (!interaction.isCommand()) return;
+
+      if (interaction.commandName === 'mute') {
+      }
+      if (interaction.commandName === 'ban') {
+        if (!interaction.options[0]) return;
+        this.banPlayer(
+      }
+    });
   }
 
   public dispatchCrier(): void {
@@ -317,6 +329,14 @@ export class DiscordManager {
   private syncDiscordGuildChannel() {
     if(this.discordChannel || !this.discordGuild) return;
     this.discordChannel = this.discordGuild.channels.cache.get(process.env.DISCORD_CHANNEL_ID) as Discord.TextChannel;
+  }
+
+  private async mutePlayer(player: Player, duration?: Integer) {
+    
+  }
+
+  private async banPlayer(player: Player) {
+    
   }
 
 }
